@@ -4,7 +4,7 @@
 Hello everyone!  
 Welcome to **Mind vs Machine Tic Tac Toe**, a strategic battle of wits where you challenge an unbeatable AI opponent! Test your skills against our perfect algorithm with three difficulty levels, track your stats, and enjoy a modern twist on the classic game with sleek animations and responsive design.  
 
-### Project Status: �  
+### Project Status: 🚀  
 - **Project Created:** 06-03-2025  
 - **Live Release Date:** 06-03-2025  
 
@@ -17,7 +17,7 @@ Welcome to **Mind vs Machine Tic Tac Toe**, a strategic battle of wits where you
 
 
 Website Link:  
-https://mind-vs-machine-tic-tac-toe.vercel.app/  
+https://mind-vs-machine-tic-tac-toe-game.vercel.app/  
 
 Feel free to use this project, but please include credit. Thank you!  
 
@@ -37,7 +37,7 @@ Ensure that you have already installed:
 
 1. **Clone this repository:**  
    ```bash  
-   git clone https://github.com/masabqurban/Mind-vs-Machine-Tic-Tac-Toe.git  
+   git clone https://github.com/masabqurban/Mind-vs-Machine-Tic-Tac-Toe-Game.git  
 
 2. **Install all dependencies:**
 
