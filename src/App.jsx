@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import GameBoard from './components/Board';
-import GameStatus from './components/GameStatus';
-import GameControls from './components/GameControls';
+import GameBoard from './components/Board.jsx';
+import GameStatus from './components/GameStatus.jsx';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
 import { checkWinner, getAIMove, WINNING_COMBINATIONS } from './utils/gameLogic';
 
 const initialState = {
@@ -115,11 +116,21 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${gameState.isDarkMode ? 'dark' : ''}`}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 p-4 md:p-8">
+    <div className={`min-h-screen flex flex-col transition-colors duration-300 ${gameState.isDarkMode ? 'dark' : ''}`}>
+      <Navbar
+        onReset={resetGame}
+        onGameModeChange={handleGameModeChange}
+        onDifficultyChange={handleDifficultyChange}
+        onDarkModeToggle={toggleDarkMode}
+        gameMode={gameState.gameMode}
+        difficulty={gameState.difficulty}
+        isDarkMode={gameState.isDarkMode}
+      />
+      
+      <main className="flex-grow bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 p-4 md:p-8">
         <div className="max-w-2xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-            Tic Tac Toe
+            Mind vs Machine Tic Tac Toe
           </h1>
           
           <GameStatus
@@ -134,18 +145,10 @@ function App() {
             onCellClick={handleMove}
             winningCombination={winningCombination}
           />
-          
-          <GameControls
-            onReset={resetGame}
-            onGameModeChange={handleGameModeChange}
-            onDifficultyChange={handleDifficultyChange}
-            onDarkModeToggle={toggleDarkMode}
-            gameMode={gameState.gameMode}
-            difficulty={gameState.difficulty}
-            isDarkMode={gameState.isDarkMode}
-          />
         </div>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
