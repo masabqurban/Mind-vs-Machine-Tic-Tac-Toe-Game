@@ -10,55 +10,58 @@ const Navbar = ({
   difficulty,
   isDarkMode
 }) => (
-  <nav className="bg-white dark:bg-gray-800 shadow-md">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="bg-white dark:bg-gray-800 shadow-md">
+    <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <button
             onClick={onReset}
-            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+            className="inline-flex items-center px-2 sm:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
           >
-            <RotateCcw className="w-4 h-4 mr-2" />
-            New Game
+            <RotateCcw className="w-4 h-4" />
+            <span className="hidden sm:inline ml-2">New Game</span>
           </button>
           
-          <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+          <div className="flex items-center space-x-1 sm:space-x-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
             <button
               onClick={() => onGameModeChange('local')}
-              className={`inline-flex items-center px-3 py-1.5 rounded-md transition-colors duration-200 ${
+              className={`inline-flex items-center px-2 sm:px-3 py-1.5 rounded-md transition-colors duration-200 ${
                 gameMode === 'local'
                   ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-400 shadow-sm'
                   : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600/50'
               }`}
             >
-              <Gamepad2 className="w-4 h-4 mr-2" />
-              Local
+              <Gamepad2 className="w-4 h-4" />
+              <span className="hidden sm:inline ml-2">Local</span>
             </button>
             <button
               onClick={() => onGameModeChange('ai')}
-              className={`inline-flex items-center px-3 py-1.5 rounded-md transition-colors duration-200 ${
+              className={`inline-flex items-center px-2 sm:px-3 py-1.5 rounded-md transition-colors duration-200 ${
                 gameMode === 'ai'
                   ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-400 shadow-sm'
                   : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600/50'
               }`}
             >
-              <Brain className="w-4 h-4 mr-2" />
-              AI
+              <Brain className="w-4 h-4" />
+              <span className="hidden sm:inline ml-2">AI</span>
             </button>
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          {/* Difficulty selector for desktop view */}
           {gameMode === 'ai' && (
-            <select
-              value={difficulty}
-              onChange={(e) => onDifficultyChange(e.target.value)}
-              className="px-3 py-1.5 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 cursor-pointer"
-            >
-              <option value="easy" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Easy</option>
-              <option value="medium" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Medium</option>
-              <option value="hard" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Hard</option>
-            </select>
+            <div className="hidden sm:block">
+              <select
+                value={difficulty}
+                onChange={(e) => onDifficultyChange(e.target.value)}
+                className="px-3 py-1.5 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 cursor-pointer"
+              >
+                <option value="easy" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Easy</option>
+                <option value="medium" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Medium</option>
+                <option value="hard" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Hard</option>
+              </select>
+            </div>
           )}
           
           <button
@@ -73,8 +76,23 @@ const Navbar = ({
           </button>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+    
+    {/* Difficulty selector moved below navbar for mobile */}
+    {gameMode === 'ai' && (
+      <div className="sm:hidden px-4 pb-4">
+        <select
+          value={difficulty}
+          onChange={(e) => onDifficultyChange(e.target.value)}
+          className="w-full px-3 py-1.5 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 cursor-pointer"
+        >
+          <option value="easy" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Easy</option>
+          <option value="medium" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Medium</option>
+          <option value="hard" className="text-gray-900 dark:text-white bg-white dark:bg-gray-700">Hard</option>
+        </select>
+      </div>
+    )}
+  </div>
 );
 
 export default Navbar;
