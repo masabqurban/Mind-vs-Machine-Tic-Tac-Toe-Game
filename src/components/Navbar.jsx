@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Sun, Gamepad2, Brain, RotateCcw } from 'lucide-react';
+import { Moon, Sun, Gamepad2, Brain, RotateCcw, CircuitBoard } from 'lucide-react';
 
 const Navbar = ({
   onReset,
@@ -13,12 +13,19 @@ const Navbar = ({
   <div className="bg-white dark:bg-gray-800 shadow-md">
     <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16">
+        <div className="flex items-center">
+          <CircuitBoard className="w-10 h-10 text-blue-700 dark:text-blue-400 animate-pulse mr-2" />
+          <span className="text-lg font-semibold text-gray-900 dark:text-white hidden sm:inline">
+            Mind vs Machine
+          </span>
+        </div>
+
         <div className="flex items-center space-x-2 sm:space-x-4">
           <button
             onClick={onReset}
             className="inline-flex items-center px-2 sm:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="w-5 h-5" />
             <span className="hidden sm:inline ml-2">New Game</span>
           </button>
           
@@ -31,7 +38,7 @@ const Navbar = ({
                   : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600/50'
               }`}
             >
-              <Gamepad2 className="w-4 h-4" />
+              <Gamepad2 className="w-5 h-5" />
               <span className="hidden sm:inline ml-2">Local</span>
             </button>
             <button
@@ -42,14 +49,13 @@ const Navbar = ({
                   : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600/50'
               }`}
             >
-              <Brain className="w-4 h-4" />
+              <Brain className="w-5 h-5" />
               <span className="hidden sm:inline ml-2">AI</span>
             </button>
           </div>
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-4">
-          {/* Difficulty selector for desktop view */}
           {gameMode === 'ai' && (
             <div className="hidden sm:block">
               <select
@@ -70,15 +76,14 @@ const Navbar = ({
             aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
             {isDarkMode ? 
-              <Sun className="w-5 h-5 text-yellow-500 animate-bounce-slow" /> : 
-              <Moon className="w-5 h-5 text-gray-600" />
+              <Sun className="w-6 h-6 text-yellow-500 animate-bounce-slow" /> : 
+              <Moon className="w-6 h-6 text-gray-600 animate-bounce-slow" />
             }
           </button>
         </div>
       </div>
     </nav>
     
-    {/* Difficulty selector moved below navbar for mobile */}
     {gameMode === 'ai' && (
       <div className="sm:hidden px-4 pb-4">
         <select
