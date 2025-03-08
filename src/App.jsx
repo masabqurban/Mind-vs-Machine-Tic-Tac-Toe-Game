@@ -130,7 +130,7 @@ function App() {
       <main className="flex-grow bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 p-4 md:p-8">
         <div className="max-w-2xl mx-auto space-y-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-            Mind vs Machine <br></br> Tic Tac Toe
+            Tic Tac Toe
           </h1>
           
           <GameStatus
